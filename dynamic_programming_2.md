@@ -24,7 +24,7 @@ Side note: if you were going to use dynamic programming in a real-world context,
 
 ### Warmup
 
-Now that we've dealt with the annoying cache problem, let's start with a problem similar to Fibonacci. We'll define the *Blair numbers* as follows:
+Now that we've dealt with the annoying cache problem, let' start swith a problem similar to Fibonacci. We'll define the *Blair numbers* as follows:
 
 - The first Blair number, <i>b<sub>1</sub></i>, is 1,
 - The second Blair number, <i>b<sub>2</sub></i>, is 2,
