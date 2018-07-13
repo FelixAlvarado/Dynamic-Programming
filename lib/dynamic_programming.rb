@@ -53,17 +53,34 @@ class DynamicProgramming
 
   end
 
+  # doesn't work with specs. copy sent answers on slack
   def knapsack(weights, values, capacity)
-    return 0 if capacity == 0
-    return 92 if capacity == 23
-    return 309 if capacity == 165
-    return 51 if capacity == 26
+    return 0 if weights.length == 0 || capacity == 0
+    solution_table = knapsack+table(weights, values,capactiy)
+    solution_table[capacity][-1]
 
   end
 
   # Helper method for bottom-up implementation
   def knapsack_table(weights, values, capacity)
+    solution_table = []
 
+    (0..capacity).each do |i|
+      solution_table[i] = []
+      (0...weights.length).each do |j|
+        if i == 0 
+          solution_table[i][j] = 0
+        elsif j == 0 
+          solution_table[i][j] = weights[j] < i ? 0 : values[j]
+        else 
+          option1 = solution_table[i][j - 1]
+          option2 = weights[j] < i ? 0 : solution_table[i - weights[j]][j - 1] + values[j]
+          optimum = [option1, option2].max
+          solution_table[i][j] = optimum
+        end 
+      end 
+    end 
+    sotlution_table
   end
 
   def maze_solver(maze, start_pos, end_pos)
